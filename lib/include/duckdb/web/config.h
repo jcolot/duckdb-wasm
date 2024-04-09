@@ -99,7 +99,11 @@ struct WebDBConfig {
     };
 
     /// Whether to allow unsigned extensions
+    #ifdef ALLOW_UNSIGNED_EXTENSIONS
+    bool allow_unsigned_extensions = true;
+    #else
     bool allow_unsigned_extensions = false;
+    #endif
 
     /// Read from a document
     static WebDBConfig ReadFrom(std::string_view args_json);
