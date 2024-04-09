@@ -43,6 +43,11 @@ case $FEATURES in
     ;;
    *) ;;
 esac
+
+if [ "${DUCKDB_ALLOW_UNSIGNED_EXTENSIONS:-0}" -eq "1" ]; then
+    ADDITIONAL_FLAGS="$ADDITIONAL_FLAGS -DDUCKDB_ALLOW_UNSIGNED_EXTENSIONS=1"
+fi
+
 echo "MODE=${MODE}"
 echo "FEATURES=${FEATURES}"
 

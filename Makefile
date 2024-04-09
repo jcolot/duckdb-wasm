@@ -364,8 +364,9 @@ build_loadable:
 	cp .github/config/extension_config_wasm.cmake submodules/duckdb/extension/extension_config.cmake
 	DUCKDB_PLATFORM=wasm_${TARGET} DUCKDB_WASM_LOADABLE_EXTENSIONS=1 GEN=ninja ./scripts/wasm_build_lib.sh relsize ${TARGET}
 
-build_loadable_unsigned: CPPFLAGS += -DALLOW_UNSIGNED_EXTENSIONS
-build_loadable_unsigned: build_loadable
+build_loadable:
+	cp .github/config/extension_config_wasm.cmake submodules/duckdb/extension/extension_config.cmake
+	DUCKDB_WASM_ALLOW_UNSIGNED_EXTENSIONS=1 DUCKDB_PLATFORM=wasm_${TARGET} DUCKDB_WASM_LOADABLE_EXTENSIONS=1 GEN=ninja ./scripts/wasm_build_lib.sh relsize ${TARGET}
 
 serve_loadable_base: wasmpack shell docs
 	yarn workspace @duckdb/duckdb-wasm-app build:release

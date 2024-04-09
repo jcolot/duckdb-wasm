@@ -99,7 +99,7 @@ struct WebDBConfig {
     };
 
     /// Whether to allow unsigned extensions
-    #ifdef ALLOW_UNSIGNED_EXTENSIONS
+    #ifdef DUCKDB_ALLOW_UNSIGNED_EXTENSIONS
     bool allow_unsigned_extensions = true;
     #else
     bool allow_unsigned_extensions = false;
